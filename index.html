@@ -6,7 +6,7 @@
         <title>Zain Fabrication | Steel & Metal Fabrication in Mangalore | Since 2015</title>
         <meta
             name="description"
-            content="Zain Fabrication, Mangalore – premium steel and metal fabrication since 2015. Gates, grills, railings, staircases, roofing sheds, structural and custom fabrication. Proprietor: Ivan Dsouza."
+            content="Zain Fabrication, Mangalore – premium steel and metal fabrication since 2015. Gates, grills, railings, staircases, roofing sheds, structural and custom fabrication. Proprietor: Ivan Dsouza. Call +91 95915 65535."
         />
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -159,8 +159,6 @@
                 background: var(--steel);
                 display: grid;
                 place-items: center;
-                position: relative;
-                overflow: hidden;
                 box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.15);
             }
             .logo-mark span {
@@ -229,7 +227,6 @@
                 height: 2px;
                 background: #fff;
                 margin: 6px 0;
-                transition: 0.3s;
             }
 
             /* HERO */
@@ -417,12 +414,6 @@
                 overflow: hidden;
                 box-shadow: 0 40px 80px -30px rgba(0, 0, 0, 0.8);
             }
-            .about-visual::before {
-                content: "";
-                position: absolute;
-                inset: 0;
-                background: repeating-linear-gradient(115deg, transparent 0 22px, rgba(255, 255, 255, 0.04) 22px 24px);
-            }
             .about-visual svg {
                 position: absolute;
                 inset: 0;
@@ -436,6 +427,7 @@
                 background: var(--bg);
                 padding: 26px 32px;
                 border-top-left-radius: 20px;
+                z-index: 3;
             }
             .about-year b {
                 font-family: "Oswald";
@@ -464,6 +456,8 @@
                 border: 1px solid var(--line);
             }
             .avatar {
+                position: relative;
+                overflow: hidden;
                 width: 62px;
                 height: 62px;
                 border-radius: 50%;
@@ -511,7 +505,6 @@
             /* SERVICES */
             .services {
                 background: var(--bg2);
-                position: relative;
             }
             .head-row {
                 display: flex;
@@ -635,7 +628,6 @@
                 box-shadow:
                     0 0 0 8px var(--bg),
                     0 0 30px rgba(255, 122, 26, 0.3);
-                position: relative;
             }
             .step h4 {
                 font-size: 1.25rem;
@@ -646,7 +638,7 @@
                 font-size: 0.9rem;
             }
 
-            /* GALLERY */
+            /* GALLERY / PHOTO SLOTS */
             .gallery {
                 background: var(--bg2);
             }
@@ -654,7 +646,6 @@
                 display: flex;
                 gap: 10px;
                 flex-wrap: wrap;
-                margin-bottom: 40px;
             }
             .filter {
                 padding: 10px 22px;
@@ -683,10 +674,7 @@
                 position: relative;
                 border-radius: var(--radius);
                 overflow: hidden;
-                cursor: pointer;
-                transition:
-                    opacity 0.4s,
-                    transform 0.4s;
+                background: var(--card);
             }
             .gal.hide {
                 display: none;
@@ -697,30 +685,31 @@
             .gal.wide {
                 grid-column: span 2;
             }
-            .gal .ph {
+            .ph {
                 position: absolute;
                 inset: 0;
                 transition: transform 0.7s;
             }
             .gal:hover .ph {
-                transform: scale(1.08);
+                transform: scale(1.06);
             }
-            .gal .ph svg {
+            .ph img,
+            .slot-img {
+                position: absolute;
+                inset: 0;
                 width: 100%;
                 height: 100%;
+                object-fit: cover;
+            }
+            .about-visual .slot-img {
+                z-index: 2;
             }
             .gal-info {
                 position: absolute;
                 inset: auto 0 0 0;
                 padding: 22px;
                 background: linear-gradient(transparent, rgba(0, 0, 0, 0.88));
-                transform: translateY(30%);
-                opacity: 0.9;
-                transition: 0.4s;
-            }
-            .gal:hover .gal-info {
-                transform: none;
-                opacity: 1;
+                pointer-events: none;
             }
             .gal-info small {
                 color: var(--accent);
@@ -732,11 +721,50 @@
             .gal-info h4 {
                 font-size: 1.15rem;
             }
+            .slot-empty {
+                position: absolute;
+                inset: 0;
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                justify-content: center;
+                gap: 8px;
+                background: repeating-linear-gradient(45deg, #1a1e24 0 14px, #1e232a 14px 28px);
+                border: 2px dashed rgba(255, 122, 26, 0.45);
+                border-radius: var(--radius);
+                color: var(--muted);
+                font-size: 0.78rem;
+                text-align: center;
+                padding: 16px 16px 70px;
+            }
+            .slot-empty svg {
+                width: 40px;
+                height: 40px;
+                stroke: var(--accent);
+                fill: none;
+                stroke-width: 1.6;
+            }
+            .slot-empty b {
+                color: var(--text);
+                font-size: 0.95rem;
+                font-family: "Oswald";
+                letter-spacing: 1px;
+            }
+            .ws-grid {
+                display: grid;
+                grid-template-columns: repeat(3, 1fr);
+                gap: 18px;
+            }
+            .ws-grid .gal {
+                height: 280px;
+            }
+            .ws-grid .slot-empty {
+                padding-bottom: 16px;
+            }
             .note {
                 margin-top: 22px;
-                font-size: 0.8rem;
+                font-size: 0.82rem;
                 color: var(--muted);
-                font-style: italic;
             }
 
             /* WHY */
@@ -911,6 +939,9 @@
                 font-weight: 600;
                 font-size: 1.02rem;
             }
+            .info-card a:hover {
+                color: var(--accent);
+            }
             form {
                 padding: 40px;
                 border-radius: 20px;
@@ -1040,10 +1071,34 @@
                 height: 32px;
                 fill: #fff;
             }
+            .call {
+                position: fixed;
+                right: 24px;
+                bottom: 96px;
+                z-index: 90;
+                width: 52px;
+                height: 52px;
+                border-radius: 50%;
+                background: var(--fire);
+                display: grid;
+                place-items: center;
+                box-shadow: 0 10px 30px rgba(255, 122, 26, 0.45);
+                transition: 0.3s;
+            }
+            .call:hover {
+                transform: scale(1.1);
+            }
+            .call svg {
+                width: 24px;
+                height: 24px;
+                stroke: #111;
+                fill: none;
+                stroke-width: 2;
+            }
             .totop {
                 position: fixed;
-                right: 32px;
-                bottom: 98px;
+                right: 28px;
+                bottom: 160px;
                 z-index: 90;
                 width: 44px;
                 height: 44px;
@@ -1138,7 +1193,8 @@
                 .svc-grid,
                 .process-grid,
                 .row,
-                .checks {
+                .checks,
+                .ws-grid {
                     grid-template-columns: 1fr;
                 }
                 .hero-stats {
@@ -1182,7 +1238,7 @@
                     <li><a href="#faq">FAQ</a></li>
                     <li><a href="#contact">Contact</a></li>
                 </ul>
-                <a href="#contact" class="btn btn-primary nav-cta">Get a Free Quote</a>
+                <a href="tel:+919591565535" class="btn btn-primary nav-cta">📞 95915 65535</a>
                 <button class="burger" id="burger" aria-label="Menu"><span></span><span></span><span></span></button>
             </div>
         </header>
@@ -1231,6 +1287,8 @@
         <section class="section about" id="about">
             <div class="container about-wrap">
                 <div class="about-visual reveal">
+                    <!-- PHOTO SLOT: images/about.jpg (shows illustration below if no photo uploaded) -->
+                    <img class="slot-img" data-src="images/about.jpg" alt="Zain Fabrication workshop" />
                     <svg viewBox="0 0 400 500" preserveAspectRatio="xMidYMid slice">
                         <defs>
                             <linearGradient id="gF" x1="0" y1="0" x2="1" y2="1">
@@ -1242,15 +1300,10 @@
                                 <stop offset="1" stop-color="#ff5f0f" stop-opacity="0" />
                             </radialGradient>
                         </defs>
-                        <!-- steel truss -->
                         <g stroke="#1c2026" stroke-width="10" fill="none" opacity=".75">
                             <path d="M-20 140 H420 M-20 300 H420" />
                             <path d="M0 140 L60 300 L120 140 L180 300 L240 140 L300 300 L360 140 L420 300" />
                         </g>
-                        <g stroke="#8a929c" stroke-width="2" fill="none" opacity=".5">
-                            <path d="M-20 136 H420 M-20 296 H420" />
-                        </g>
-                        <!-- weld glow -->
                         <circle cx="240" cy="140" r="90" fill="url(#glow)" />
                         <circle cx="240" cy="140" r="7" fill="#fff" />
                         <g stroke="url(#gF)" stroke-width="2" stroke-linecap="round">
@@ -1260,10 +1313,7 @@
                             <path d="M240 140 l-30 -55" />
                             <path d="M240 140 l15 60" />
                             <path d="M240 140 l-50 20" />
-                            <path d="M240 140 l75 -35" />
-                            <path d="M240 140 l25 -70" />
                         </g>
-                        <!-- column -->
                         <rect x="40" y="320" width="320" height="16" fill="#1c2026" opacity=".8" />
                         <rect x="70" y="336" width="18" height="200" fill="#1c2026" opacity=".8" />
                         <rect x="312" y="336" width="18" height="200" fill="#1c2026" opacity=".8" />
@@ -1294,8 +1344,14 @@
                         <li>Site visit & measurement</li>
                     </ul>
                     <div class="proprietor">
-                        <div class="avatar">ID</div>
-                        <div><b>Ivan Dsouza</b><small>Founder & Proprietor, Zain Fabrication</small></div>
+                        <!-- PHOTO SLOT: images/ivan.jpg (shows "ID" initials if no photo) -->
+                        <div class="avatar">
+                            ID<img class="slot-img" data-src="images/ivan.jpg" alt="Ivan Dsouza" />
+                        </div>
+                        <div>
+                            <b>Ivan Dsouza</b
+                            ><small>Founder & Proprietor · <a href="tel:+919591565535">+91 95915 65535</a></small>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -1434,69 +1490,96 @@
             </div>
         </section>
 
-        <!-- ============ PROJECTS ============ -->
+        <!-- ============ PROJECTS (PHOTO SLOTS) ============ -->
         <section class="section gallery" id="projects">
             <div class="container">
-                <div class="head-row">
+                <div class="head-row" style="margin-bottom: 40px">
                     <div class="reveal">
                         <div class="eyebrow">Our Work</div>
                         <h2 class="section-title">Featured projects</h2>
                     </div>
                     <div class="filters reveal d1">
-                        <button class="filter active" data-f="all">All</button>
-                        <button class="filter" data-f="res">Residential</button>
-                        <button class="filter" data-f="com">Commercial</button>
-                        <button class="filter" data-f="ind">Industrial</button>
+                        <button class="filter active" type="button" data-f="all">All</button>
+                        <button class="filter" type="button" data-f="res">Residential</button>
+                        <button class="filter" type="button" data-f="com">Commercial</button>
+                        <button class="filter" type="button" data-f="ind">Industrial</button>
                     </div>
                 </div>
-                <div class="gal-grid" id="galGrid">
+                <!-- To change a title or category, edit the <small> and <h4> text below.
+         data-c: res = Residential, com = Commercial, ind = Industrial -->
+                <div class="gal-grid">
                     <div class="gal tall reveal" data-c="res">
-                        <div class="ph" data-art="gate"></div>
+                        <div class="ph" data-img="images/project1.jpg"></div>
                         <div class="gal-info">
                             <small>Residential</small>
                             <h4>Designer Main Gate</h4>
                         </div>
                     </div>
                     <div class="gal wide reveal d1" data-c="ind">
-                        <div class="ph" data-art="shed"></div>
+                        <div class="ph" data-img="images/project2.jpg"></div>
                         <div class="gal-info">
                             <small>Industrial</small>
                             <h4>Warehouse Roofing Shed</h4>
                         </div>
                     </div>
                     <div class="gal reveal d2" data-c="res">
-                        <div class="ph" data-art="rail"></div>
+                        <div class="ph" data-img="images/project3.jpg"></div>
                         <div class="gal-info">
                             <small>Residential</small>
                             <h4>Balcony Railing</h4>
                         </div>
                     </div>
                     <div class="gal reveal" data-c="com">
-                        <div class="ph" data-art="stair"></div>
+                        <div class="ph" data-img="images/project4.jpg"></div>
                         <div class="gal-info">
                             <small>Commercial</small>
                             <h4>Steel Staircase</h4>
                         </div>
                     </div>
                     <div class="gal reveal d1" data-c="res">
-                        <div class="ph" data-art="grill"></div>
+                        <div class="ph" data-img="images/project5.jpg"></div>
                         <div class="gal-info">
                             <small>Residential</small>
                             <h4>Window Safety Grills</h4>
                         </div>
                     </div>
                     <div class="gal wide reveal d2" data-c="com">
-                        <div class="ph" data-art="truss"></div>
+                        <div class="ph" data-img="images/project6.jpg"></div>
                         <div class="gal-info">
                             <small>Commercial</small>
                             <h4>Structural Steel Frame</h4>
                         </div>
                     </div>
+                    <div class="gal reveal" data-c="res">
+                        <div class="ph" data-img="images/project7.jpg"></div>
+                        <div class="gal-info">
+                            <small>Residential</small>
+                            <h4>Terrace Roofing</h4>
+                        </div>
+                    </div>
+                    <div class="gal reveal d1" data-c="ind">
+                        <div class="ph" data-img="images/project8.jpg"></div>
+                        <div class="gal-info">
+                            <small>Industrial</small>
+                            <h4>Custom Fabrication</h4>
+                        </div>
+                    </div>
                 </div>
-                <p class="note">
-                    Tip: replace these illustrations with real project photos — swap each &lt;div class="ph"&gt; with an
-                    &lt;img&gt; tag.
-                </p>
+            </div>
+        </section>
+
+        <!-- ============ WORKSHOP (PHOTO SLOTS) ============ -->
+        <section class="section" style="padding-bottom: 0">
+            <div class="container">
+                <div class="reveal" style="margin-bottom: 40px">
+                    <div class="eyebrow">Inside Our Workshop</div>
+                    <h2 class="section-title">Where the work happens</h2>
+                </div>
+                <div class="ws-grid">
+                    <div class="gal reveal"><div class="ph" data-img="images/workshop1.jpg"></div></div>
+                    <div class="gal reveal d1"><div class="ph" data-img="images/workshop2.jpg"></div></div>
+                    <div class="gal reveal d2"><div class="ph" data-img="images/workshop3.jpg"></div></div>
+                </div>
             </div>
         </section>
 
@@ -1513,7 +1596,7 @@
                         relationships with customers across Mangalore since 2015.
                     </p>
                     <div class="materials">
-                        <span>Mild Steel (MS)</span><span>Stainless Steel (SS 304 / 202)</span><span>GI Pipes</span
+                        <span>Mild Steel (MS)</span><span>Stainless Steel</span><span>GI Pipes</span
                         ><span>Aluminium</span><span>Roofing Sheets</span><span>Toughened Glass</span>
                     </div>
                 </div>
@@ -1573,8 +1656,8 @@
         <section style="padding-bottom: 110px">
             <div class="container">
                 <div class="cta reveal">
-                    <h2>Have a project in mind? Let's build it together.</h2>
-                    <a href="#contact" class="btn">Get Your Free Quote →</a>
+                    <h2>Have a project in mind? Call us at 95915 65535.</h2>
+                    <a href="tel:+919591565535" class="btn">Call Now →</a>
                 </div>
             </div>
         </section>
@@ -1585,7 +1668,7 @@
                 <div class="eyebrow reveal">FAQ</div>
                 <h2 class="section-title reveal d1">Frequently asked questions</h2>
             </div>
-            <div class="container faq-wrap" style="text-align: left">
+            <div class="container faq-wrap">
                 <div class="faq">
                     <button type="button">Do you provide free site visits and quotations?<i>+</i></button>
                     <div class="faq-a">
@@ -1654,7 +1737,9 @@
                                     />
                                 </svg>
                             </div>
-                            <div><small>Call / WhatsApp</small><b>+91 XXXXX XXXXX</b></div>
+                            <div>
+                                <small>Call / WhatsApp</small><b><a href="tel:+919591565535">+91 95915 65535</a></b>
+                            </div>
                         </div>
                         <div class="info-card">
                             <div class="svc-ico">
@@ -1763,19 +1848,25 @@
                         <h5>Reach Us</h5>
                         <ul>
                             <li>Mangalore, Karnataka</li>
-                            <li>+91 8105543677</li>
+                            <li><a href="tel:+919591565535">+91 95915 65535</a></li>
                             <li>info@zainfabrication.com</li>
-                            <li>Mon–Sat, 9 AM – 6 PM</li>
+                            <li>Mon–Sat, 9 AM – 7 PM</li>
                         </ul>
                     </div>
                 </div>
                 <div class="copy">
                     <span>© <span id="yr"></span> Zain Fabrication. All rights reserved.</span
-                    ><span>Crafted with steel & pride in Mangaluru.</span>
+                    ><span>Crafted with steel & pride in Mangalore.</span>
                 </div>
             </div>
         </footer>
 
+        <a class="call" href="tel:+919591565535" aria-label="Call"
+            ><svg viewBox="0 0 24 24">
+                <path
+                    d="M22 16.9v3a2 2 0 01-2.2 2 19.8 19.8 0 01-8.6-3.1 19.5 19.5 0 01-6-6A19.8 19.8 0 012.1 4.2 2 2 0 014.1 2h3a2 2 0 012 1.7c.1 1 .4 1.9.7 2.8a2 2 0 01-.5 2.1L8 9.9a16 16 0 006 6l1.3-1.3a2 2 0 012.1-.4c.9.3 1.8.6 2.8.7a2 2 0 011.7 2z"
+                /></svg
+        ></a>
         <a class="wa" id="waBtn" href="#" target="_blank" rel="noopener" aria-label="WhatsApp">
             <svg viewBox="0 0 32 32">
                 <path
@@ -1786,8 +1877,7 @@
         <div class="totop" id="toTop">↑</div>
 
         <script>
-            /* ===== EDIT YOUR WHATSAPP NUMBER HERE (country code, no + or spaces) ===== */
-            const WHATSAPP = "917795630807";
+            const WHATSAPP = "919591565535";
 
             document.getElementById("yr").textContent = new Date().getFullYear();
             document.getElementById("waBtn").href =
@@ -1809,7 +1899,7 @@
                 .querySelectorAll("a")
                 .forEach((a) => a.addEventListener("click", () => navLinks.classList.remove("open")));
 
-            /* Reveal + counters */
+            /* Reveal + counter */
             const io = new IntersectionObserver(
                 (es) =>
                     es.forEach((e) => {
@@ -1845,52 +1935,43 @@
                     document.querySelectorAll(".filter").forEach((x) => x.classList.remove("active"));
                     b.classList.add("active");
                     document
-                        .querySelectorAll(".gal")
+                        .querySelectorAll(".gal-grid .gal")
                         .forEach((g) =>
                             g.classList.toggle("hide", b.dataset.f !== "all" && g.dataset.c !== b.dataset.f)
                         );
                 })
             );
 
-            /* Gallery illustrations (placeholders until real photos are added) */
-            const bg = (a, b) =>
-                `<defs><linearGradient id="g${a}" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="${a}"/><stop offset="1" stop-color="${b}"/></linearGradient><linearGradient id="fx" x1="0" x2="1"><stop offset="0" stop-color="#ff5f0f"/><stop offset="1" stop-color="#ffc46b"/></linearGradient></defs><rect width="400" height="400" fill="url(#g${a})"/>`;
-            const arts = {
-                gate:
-                    bg("#2b3038", "#14171c") +
-                    `<g stroke="url(#fx)" stroke-width="4" fill="none"><rect x="70" y="80" width="260" height="280"/><path d="M200 80v280"/>${[...Array(9)].map((_, i) => `<path d="M${95 + i * 27} 120v220"/>`).join("")}<path d="M70 120h260M70 340h260"/><circle cx="135" cy="230" r="34"/><circle cx="265" cy="230" r="34"/></g>`,
-                shed:
-                    bg("#30353d", "#16191e") +
-                    `<g stroke="url(#fx)" stroke-width="4" fill="none"><path d="M20 180 200 80l180 100"/><path d="M50 165v190M350 165v190M200 80v275"/><path d="M50 165 125 125 125 355M275 125v230M350 165 275 125"/>${[...Array(7)].map((_, i) => `<path d="M${50 + i * 50} 355v-10"/>`).join("")}<path d="M20 355h360"/></g>`,
-                rail:
-                    bg("#2a2f37", "#121519") +
-                    `<g stroke="url(#fx)" stroke-width="4" fill="none"><path d="M30 150h340M30 320h340M30 175h340"/>${[...Array(12)].map((_, i) => `<path d="M${45 + i * 28} 175v145"/>`).join("")}</g>`,
-                stair:
-                    bg("#2e333b", "#15181d") +
-                    `<g stroke="url(#fx)" stroke-width="4" fill="none"><path d="M40 360h60v-50h60v-50h60v-50h60v-50h60v-50"/><path d="M60 300 360 60"/>${[...Array(5)].map((_, i) => `<path d="M${80 + i * 60} ${284 - i * 48}v${48 + 0}"/>`).join("")}</g>`,
-                grill:
-                    bg("#282d35", "#111418") +
-                    `<g stroke="url(#fx)" stroke-width="4" fill="none"><rect x="80" y="60" width="240" height="280"/>${[...Array(5)].map((_, i) => `<path d="M${120 + i * 40} 60v280"/>`).join("")}<path d="M80 200h240"/><path d="M200 140l40 60-40 60-40-60z"/></g>`,
-                truss:
-                    bg("#2c3139", "#13161b") +
-                    `<g stroke="url(#fx)" stroke-width="4" fill="none"><path d="M0 130h400M0 270h400"/><path d="M0 130 50 270 100 130 150 270 200 130 250 270 300 130 350 270 400 130"/></g><circle cx="200" cy="130" r="40" fill="#ff9a2e" opacity=".25"/><circle cx="200" cy="130" r="5" fill="#fff"/>`,
-            };
-            document
-                .querySelectorAll(".ph")
-                .forEach(
-                    (p) =>
-                        (p.innerHTML = `<svg viewBox="0 0 400 400" preserveAspectRatio="xMidYMid slice">${arts[p.dataset.art]}</svg>`)
-                );
+            /* PHOTO SLOTS: loads images/xxx.jpg; shows "Add Photo" block if file not uploaded yet */
+            const cam =
+                '<svg viewBox="0 0 24 24"><path d="M3 7h4l2-3h6l2 3h4v13H3z"/><circle cx="12" cy="13" r="4"/></svg>';
+            document.querySelectorAll(".ph").forEach((p) => {
+                const src = p.dataset.img,
+                    img = new Image();
+                img.alt = "Zain Fabrication project";
+                img.onload = () => {
+                    p.innerHTML = "";
+                    p.appendChild(img);
+                };
+                img.onerror = () => {
+                    p.innerHTML = `<div class="slot-empty">${cam}<b>ADD PHOTO</b>${src}</div>`;
+                };
+                img.src = src;
+            });
+            document.querySelectorAll(".slot-img").forEach((i) => {
+                i.onerror = () => i.remove();
+                i.src = i.dataset.src;
+            });
 
-            /* Quote form → WhatsApp */
+            /* Quote form -> WhatsApp */
             document.getElementById("quoteForm").addEventListener("submit", (e) => {
                 e.preventDefault();
                 const v = (id) => document.getElementById(id).value.trim();
-                const msg = `Hello Zain Fabrication,%0A%0AName: ${v("n")}%0APhone: ${v("p")}%0AService: ${v("s")}%0ALocation: ${v("l")}%0ADetails: ${v("m")}`;
-                window.open(`https://wa.me/${WHATSAPP}?text=${msg.replace(/ /g, "%20")}`, "_blank");
+                const msg = `Hello Zain Fabrication,\n\nName: ${v("n")}\nPhone: ${v("p")}\nService: ${v("s")}\nLocation: ${v("l")}\nDetails: ${v("m")}`;
+                window.open(`https://wa.me/${WHATSAPP}?text=${encodeURIComponent(msg)}`, "_blank");
             });
 
-            /* Welding sparks canvas */
+            /* Welding sparks */
             const cv = document.getElementById("sparks"),
                 ctx = cv.getContext("2d");
             let W,
@@ -1902,23 +1983,6 @@
             };
             size();
             addEventListener("resize", size);
-            const reduce = matchMedia("(prefers-reduced-motion: reduce)").matches;
-            function emit() {
-                const ox = W * (W < 820 ? 0.75 : 0.78),
-                    oy = H * 0.55;
-                for (let i = 0; i < 5; i++) {
-                    const a = -Math.PI / 2 + (Math.random() - 0.5) * 2.6,
-                        s = 2 + Math.random() * 7;
-                    parts.push({
-                        x: ox,
-                        y: oy,
-                        vx: Math.cos(a) * s,
-                        vy: Math.sin(a) * s,
-                        life: 1,
-                        d: 0.008 + Math.random() * 0.02,
-                    });
-                }
-            }
             function loop() {
                 ctx.clearRect(0, 0, W, H);
                 const ox = W * (W < 820 ? 0.75 : 0.78),
@@ -1932,7 +1996,18 @@
                 ctx.beginPath();
                 ctx.arc(ox, oy, fl * 3, 0, 7);
                 ctx.fill();
-                emit();
+                for (let i = 0; i < 5; i++) {
+                    const a = -Math.PI / 2 + (Math.random() - 0.5) * 2.6,
+                        s = 2 + Math.random() * 7;
+                    parts.push({
+                        x: ox,
+                        y: oy,
+                        vx: Math.cos(a) * s,
+                        vy: Math.sin(a) * s,
+                        life: 1,
+                        d: 0.008 + Math.random() * 0.02,
+                    });
+                }
                 parts = parts.filter((p) => p.life > 0);
                 for (const p of parts) {
                     const px = p.x,
@@ -1955,7 +2030,7 @@
                 if (parts.length > 600) parts.splice(0, parts.length - 600);
                 requestAnimationFrame(loop);
             }
-            if (!reduce) loop();
+            if (!matchMedia("(prefers-reduced-motion: reduce)").matches) loop();
         </script>
     </body>
 </html>
